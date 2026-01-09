@@ -28,11 +28,11 @@ io.on('connection', (socket) => {
   socket.on('send_message', (data) => {
     socket.to(data.room).emit('receive_message', data);
   });
-  
+
   // Specific Task Management Events
   socket.on('task_update', (data) => {
-      // Broadcast to all others
-      socket.broadcast.emit('task_updated', data);
+    // Broadcast to all others
+    socket.broadcast.emit('task_updated', data);
   });
 
   socket.on('disconnect', () => {
@@ -40,6 +40,7 @@ io.on('connection', (socket) => {
   });
 });
 
-server.listen(3001, () => {
-  console.log('SERVER RUNNING on port 3001');
+const PORT = process.env.PORT || 3001;
+server.listen(PORT, () => {
+  console.log(`SERVER RUNNING on port ${PORT}`);
 });

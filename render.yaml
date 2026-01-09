@@ -1,0 +1,26 @@
+services:
+  # Backend Server
+  - type: web
+    name: task-management-server
+    runtime: node
+    plan: free
+    region: singapore # Optional: closer to user (India)
+    buildCommand: cd server && npm install
+    startCommand: cd server && npm start
+    envVars:
+      - key: PORT
+        sync: false
+    autoDeploy: true
+
+  # Frontend Client (Optional - if you want to host client on Render too)
+  # - type: static
+  #   name: task-management-client
+  #   runtime: static
+  #   buildCommand: cd client && npm install && npm run build
+  #   publishDir: client/dist
+  #   envVars:
+  #     - key: VITE_SERVER_URL
+  #       fromService:
+  #         type: web
+  #         name: task-management-server
+  #         property: url
