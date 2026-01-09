@@ -8,6 +8,10 @@ require('dotenv').config();
 
 app.use(cors());
 
+app.get('/', (req, res) => {
+  res.send('Task Management Server is Running');
+});
+
 const server = http.createServer(app);
 
 const io = new Server(server, {
