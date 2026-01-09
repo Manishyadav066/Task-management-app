@@ -4,9 +4,10 @@ services:
     name: task-management-server
     runtime: node
     plan: free
-    region: singapore # Optional: closer to user (India)
-    buildCommand: cd server && npm install
-    startCommand: cd server && npm start
+    region: singapore
+    rootDir: server
+    buildCommand: npm install
+    startCommand: npm start
     envVars:
       - key: PORT
         sync: false
